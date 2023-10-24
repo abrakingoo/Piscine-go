@@ -1,1 +1,1 @@
-find . -name "a*" -o -type f  -name "*z" -o -type f  -name "z*a"
+find . \( -type d -name "a*" -o -type f \( -name "*z" -o -name "z*a!" \) \) -not -path '*/\.*'
