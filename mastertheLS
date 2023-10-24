@@ -1,1 +1,1 @@
-ls -tF --format=commas
+ls -tFm | sed 's/ //g'
