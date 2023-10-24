@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 # Check if HERO_ID is set in the environment
 if [ -z "$HERO_ID" ]; then
   echo "HERO_ID environment variable is not set."
