@@ -7,5 +7,5 @@ if [ -z "$HERO_ID" ]; then
 fi
 
 # Use curl to fetch the superhero data and jq to process it
-curl -s https://learn.zone01kisumu.ke/assets/superhero/all.json | jq -r --arg hero_id "$HERO_ID" '.[] | select(.id == ($hero_id | tonumber)) | .connections.relatives | gsub("\"";"") | gsub("Martha Wayne"; "\nMartha Wayne")'
+curl -s https://learn.zone01kisumu.ke/assets/superhero/all.json | jq -r --arg hero_id "$HERO_ID" '.[] | select(.id == ($hero_id | tonumber)) | .connections.relatives | gsub("\"";"") | gsub("\n"; " ")'
 
