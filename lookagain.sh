@@ -1,2 +1,2 @@
 #!/bin/bash
-find . ! -name "*.sh" | sed 's/.\//g' | sort -r
+find . ! -name "*.sh" | sed 's/.\///g' | sort -r
