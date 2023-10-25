@@ -8,9 +8,9 @@ func PrintComb() {
 			for k := j + 1; k < 10; k++ {
 				z01.PrintRune(i, j, k)
 				if i < 7 {
-					z01.PrintRune(", ")
+					z01.PrintRune(', ')
 				} else if i == 7 && j < 8 {
-					z01.PrintRune(", ")
+					z01.PrintRune(', ')
 				}
 			}
 		}
