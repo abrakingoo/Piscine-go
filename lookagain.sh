@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -I "*.sh"
+ls -I "*.sh" | sort -r
