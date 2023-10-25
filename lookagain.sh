@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -R -I "*.sh"
+ls -I "*.sh"
