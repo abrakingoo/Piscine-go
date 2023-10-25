@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f  -name "*.sh" | sed 's/.sh//g' | sed 's/.\///g' | sort -r
+find . -type f -name "*.sh" -exec basename {} .sh \; | sort -r
