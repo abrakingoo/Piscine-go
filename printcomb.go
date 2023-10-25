@@ -1,19 +1,19 @@
 package piscine
 
-import "fmt"
+import "github.com/01-edu/z01"
 
 func PrintComb() {
 	for i := 0; i < 10; i++ {
 		for j := i + 1; j < 10; j++ {
 			for k := j + 1; k < 10; k++ {
-				fmt.Print(i, j, k)
+				z01.PrintRune(i, j, k)
 				if i < 7 {
-					fmt.Print(", ")
+					z01.PrintRune(", ")
 				} else if i == 7 && j < 8 {
-					fmt.Print(", ")
+					z01.PrintRune(", ")
 				}
 			}
 		}
 	}
-	fmt.Println()
+	z01.PrintRune('\n')
 }
