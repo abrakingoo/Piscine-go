@@ -1,13 +1,13 @@
 package main
 
-import "fmt"
+import "github.com/01-edu/z01"
 
 func main() {
 
 	// This is to print a to z using ascii code
-	for char := 97; char <= 122; char++ {
-		fmt.Printf("%c", char)
+	for char := 'a'; char <= 'z'; char++ {
+		z01.PrintRune(char)
 	}
-	fmt.Println("")
+	z01.PrintRune('\n')
 
 }
