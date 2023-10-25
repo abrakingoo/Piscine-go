@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l | sed -n 'p;n'
+ls -l | awk 'NR%2==0'
