@@ -6,7 +6,7 @@ func BasicAtoi(s string) int {
 		if char < '0' || char > '9' {
 			return 0
 		}
-		result = result*10 + int(char-'O')
+		result = result*10 + int(char-'0')
 	}
 	return result
 }
