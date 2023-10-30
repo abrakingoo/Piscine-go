@@ -1,15 +1,14 @@
 package piscine
 
-import "math"
-
 func IterativeFactorial(nb int) int {
 	result := 1
+	maxInt := 1<<31 - 1
 
 	if nb < 0 {
 		return 0
 	}
 	for i := 1; i <= nb; i++ {
-		if result > math.MaxInt32/i {
+		if result > maxInt/i {
 			return 0
 		}
 		result *= i
