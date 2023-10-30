@@ -5,13 +5,14 @@ func IterativeFactorial(nb int) int {
 	maxInt := 1<<31 - 1
 
 	if nb < 0 {
-		return 1
-	}
-	for i := 1; i <= nb; i++ {
-		if result > maxInt/i {
-			return 0
+		return 0
+	}else {
+		for i := 1; i <= nb; i++ {
+			if result > maxInt/i {
+				return 0
+			}
+			result *= i
 		}
-		result *= i
 	}
 	return result
 }
