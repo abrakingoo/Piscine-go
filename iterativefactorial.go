@@ -9,7 +9,7 @@ func IterativeFactorial(nb int) int {
 	}
 	for i := 1; i <= nb; i++ {
 		if result > maxInt/i {
-			return 1
+			return 0
 		}
 		result *= i
 	}
