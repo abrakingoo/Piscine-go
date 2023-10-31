@@ -2,10 +2,10 @@ package piscine
 
 func Index(s string, toFind string) int {
 	find := toFind[0]
-	for index, char := range s {
-		if s[char] == find {
-			return index
+	for i := 0; i < len(s); i++ {
+		if s[i] == find {
+			return i
 		}
 	}
-	return 0
+	return -1
 }
