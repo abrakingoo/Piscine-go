@@ -5,7 +5,7 @@ func Index(s string, toFind string) int {
 		return 0
 	}
 	find := toFind[0]
-	if !(find >= 'a' && find <= 'z' || find >= 'A' && find <= 'Z') {
+	if !(find >= 48 && find <= 57) {
 		return -1
 	}
 	for i := 0; i < len(s); i++ {
