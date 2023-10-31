@@ -6,5 +6,5 @@ func Compare(a, b string) int {
 	} else if len(a) > len(b) {
 		return -1
 	}
-	return 0
+	return 1
 }
