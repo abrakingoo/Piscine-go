@@ -4,7 +4,7 @@ func NRune(s string, n int) rune {
 	rRune := []rune(s)
 	if n >= 0 && n < len(rRune) {
 		for i := 0; i <= len(rRune); i++ {
-			if i == n {
+			if i == n-1 {
 				return rRune[i]
 			}
 		}
