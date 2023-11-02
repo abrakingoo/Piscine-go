@@ -1,12 +1,14 @@
 package piscine
 
 func SplitWhiteSpaces(s string) []string {
-	str := []string{}
+	var str []string
 	word := ""
 	for i := 0; i < len(s); i++ {
 		if s[i] == ' ' {
-			str = append(str, word)
-			word = ""
+			if word != "" {
+				str = append(str, word)
+				word = ""
+			}
 		} else {
 			word += string(s[i])
 		}
