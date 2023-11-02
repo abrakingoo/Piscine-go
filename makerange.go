@@ -7,7 +7,7 @@ func MakeRange(min, max int) []int {
 		return res
 	}
 	for i := min; i < max; i++ {
-		res[i]++
+		res[i] = i
 	}
 	return res
 }
