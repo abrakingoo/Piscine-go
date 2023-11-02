@@ -21,7 +21,6 @@ func main() {
 		z01.PrintRune(rune(char[0]))
 		z01.PrintRune('\n')
 	}
-
 }
 
 func compare(a, b string) int {
