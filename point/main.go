@@ -24,6 +24,7 @@ func printNumber(n int) []rune {
 
 	return digits
 }
+
 func main() {
 	points := &point{}
 
