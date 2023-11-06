@@ -14,29 +14,26 @@ func setPoint(ptr *point) {
 	ptr.y = 21
 }
 
-func printNumber(n int) {
-	if n == 0 {
-		z01.PrintRune('0')
-		return
+func printValue(n int) {
+	divisor := 1
+	for divisor <= n/10 {
+		divisor *= 10
 	}
-
-	digit := n % 10
-	rest := n / 10
-
-	if rest != 0 {
-		printNumber(rest)
+	for divisor > 0 {
+		digit := n / divisor
+		z01.PrintRune('0' + digit)
+		n %= divisor
+		divisor /= 10
 	}
-	z01.PrintRune('0' + rune(digit))
 }
 
 func main() {
 	points := &point{}
-
 	setPoint(points)
-	list := []int{points.x, points.y}
+	list := []int{points.y, points.x}
 
 	for i := 0; i < len(list); i++ {
-		printNumber(list[i])
+		printValue(list[i])
 		z01.PrintRune(' ')
 	}
 	z01.PrintRune('\n')
