@@ -9,6 +9,7 @@ import (
 func even(nbr int) bool {
 	return nbr%2 == 0
 }
+
 func printStr(s string) {
 	for _, r := range s {
 		z01.PrintRune(r)
