@@ -12,42 +12,46 @@ type point struct {
 	y int
 }
 
-func intToString(n int) string {
+func main() {
+	points := &point{}
+	setPoint(points)
+
+	// Printing the values of x and y
+	z01.PrintRune('x')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	printInt(points.x)
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+	z01.PrintRune('y')
+	z01.PrintRune(' ')
+	z01.PrintRune('=')
+	z01.PrintRune(' ')
+	printInt(points.y)
+	z01.PrintRune('\n')
+}
+
+func printInt(n int) {
 	if n == 0 {
-		return "0"
+		z01.PrintRune('0')
+		return
 	}
 	negative := false
 	if n < 0 {
 		negative = true
 		n = -n
 	}
-	str := ""
+	digits := []rune{}
 	for n > 0 {
-		digit := n % 10
-		str = string('0'+digit) + str
+		digit := rune('0' + n%10)
+		digits = append([]rune{digit}, digits...)
 		n /= 10
 	}
 	if negative {
-		str = "-" + str
+		z01.PrintRune('-')
 	}
-	return str
-}
-
-func printStr(s string) {
-	for _, r := range s {
-		z01.PrintRune(r)
+	for _, digit := range digits {
+		z01.PrintRune(digit)
 	}
-}
-
-func main() {
-	points := &point{}
-
-	setPoint(points)
-	xStr := "x = " + intToString(points.x) + ", "
-	yStr := "y = " + intToString(points.y)
-
-	// Printing the values of x and y
-	printStr(xStr)
-	printStr(yStr)
-	printStr("\n")
 }
