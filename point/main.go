@@ -12,9 +12,9 @@ func setPoint(ptr *point) {
 }
 
 func main() {
-	points:= new(point)
+	points := new(point)
 
 	setPoint(points)
 
-	fmt.Printf("x = %d, y = %d\n",points.x, points.y)
+	fmt.Printf("x = %d, y = %d\n", points.x, points.y)
 }
