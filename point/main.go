@@ -13,7 +13,6 @@ type point struct {
 }
 
 func main() {
-
 	points := &point{}
 
 	setPoint(*&points)
