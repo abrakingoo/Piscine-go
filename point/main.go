@@ -17,16 +17,7 @@ func main() {
 	setPoint(points)
 
 	// Printing the values of x and y
-	z01.PrintRune('x')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
 	printNumber(points.x)
-	z01.PrintRune(',')
-	z01.PrintRune(' ')
-	z01.PrintRune('y')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
 	z01.PrintRune(' ')
 	printNumber(points.y)
 	z01.PrintRune('\n')
@@ -47,7 +38,7 @@ func printNumber(n int) {
 		digits = append([]rune{rune('0' + d)}, digits...)
 		n /= 10
 	}
-	for _, d := range digits {
-		z01.PrintRune(d)
+	for i := 0; i < len(digits); i++ {
+		z01.PrintRune(rune(digits[i]))
 	}
 }
