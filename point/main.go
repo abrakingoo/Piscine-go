@@ -17,41 +17,41 @@ func main() {
 	setPoint(points)
 
 	// Printing the values of x and y
-	z01.PrintRune('x')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	printInt(points.x)
-	z01.PrintRune(',')
-	z01.PrintRune(' ')
-	z01.PrintRune('y')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	printInt(points.y)
-	z01.PrintRune('\n')
+	printChar('x')
+	printChar(' ')
+	printChar('=')
+	printChar(' ')
+	printNumber(points.x)
+	printChar(',')
+	printChar(' ')
+	printChar('y')
+	printChar(' ')
+	printChar('=')
+	printChar(' ')
+	printNumber(points.y)
+	printChar('\n')
 }
 
-func printInt(n int) {
-	if n == 0 {
-		z01.PrintRune('0')
+func printChar(char rune) {
+	z01.PrintRune(char)
+}
+
+func printNumber(number int) {
+	if number == 0 {
+		printChar('0')
 		return
 	}
-	negative := false
-	if n < 0 {
-		negative = true
-		n = -n
+	if number < 0 {
+		printChar('-')
+		number *= -1
 	}
 	digits := []rune{}
-	for n > 0 {
-		digit := rune('0' + n%10)
+	for number > 0 {
+		digit := '0' + rune(number%10)
 		digits = append([]rune{digit}, digits...)
-		n /= 10
-	}
-	if negative {
-		z01.PrintRune('-')
+		number /= 10
 	}
 	for _, digit := range digits {
-		z01.PrintRune(digit)
+		printChar(digit)
 	}
 }
