@@ -27,7 +27,7 @@ func PrintStr(str string) {
 	for _, r := range str {
 		z01.PrintRune(r)
 	}
-	z01.PrintRune('\n')
+	// z01.PrintRune('\n')
 }
 
 func main() {
