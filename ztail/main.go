@@ -1,10 +1,29 @@
 package main
 
-import "github.com/01-edu/z01"
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+)
 
 func main() {
-	for char := 'z'; char >= 'a'; char-- {
-		z01.PrintRune(char)
+	args := os.Args[1:]
+	if len(args) != 1 {
+		if len(args) > 1 {
+			fmt.Println("Too many arguments")
+		} else {
+			fmt.Println("File name missing")
+		}
+		return
 	}
-	z01.PrintRune('\n')
+	filename := args[0]
+	ReadFile(filename)
+}
+
+func ReadFile(filename string) {
+	data, err := ioutil.ReadFile(filename)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Print(string(data))
 }
