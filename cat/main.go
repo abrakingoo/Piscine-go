@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/01-edu/z01"
 	"io"
 	"io/ioutil"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
 func PrintResult(str string) {
