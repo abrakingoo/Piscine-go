@@ -45,7 +45,8 @@ func ReadFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
 		PrintStr("ERROR: open " + filename + ": no such file or directory")
-		os.Exit(1) 
+		
+		os.Exit(1)
 	}
 	defer file.Close()
 
