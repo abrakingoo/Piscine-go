@@ -7,6 +7,5 @@ func SortWordArr(a []string) {
 				a[i], a[j] = a[j], a[i]
 			}
 		}
-
 	}
 }
