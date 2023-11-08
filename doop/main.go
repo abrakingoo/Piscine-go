@@ -2,187 +2,130 @@ package main
 
 import (
 	"os"
-
-	"github.com/01-edu/z01"
 )
 
-const (
-	maxInt64Str = "9223372036854775807"  // Maximum int64 value as a string
-	minInt64Str = "-9223372036854775808" // Minimum int64 value as a string
-)
-
-func IsOverflow(s string) bool {
-	if len(s) < len(maxInt64Str) {
-		return false
-	} else if len(s) > len(maxInt64Str) {
-		return true
-	}
-	for i := 0; i < len(s); i++ {
-		if s[i] < maxInt64Str[i] {
-			return true
+func Contains(str string, substr string) bool {
+	for _, c := range substr {
+		for _, sc := range str {
+			if c == sc {
+				return true
+			}
 		}
 	}
 	return false
 }
 
-func IsUnderflow(s string) bool {
-	if len(s) < len(minInt64Str) {
-		return false
-	} else if len(s) > len(minInt64Str) {
-		return true
-	}
-	for i := 0; i < len(s); i++ {
-		if s[i] < minInt64Str[i] {
-			return true
+func Atoi(str string) int {
+	var sum int
+	var negative bool = false
+	for i, c := range str {
+		if c == '-' {
+			negative = true
+			continue
+		}
+		sum += int(c) - '0'
+		if len(str) > 1 && i != len(str)-1 {
+			sum *= 10
 		}
 	}
-	return false
-}
-
-func Isdigit(n byte) bool {
-	return n >= '0' && n <= '9'
-}
-
-func Atoi(s string) int {
-	sign := 1
-	if s[0] == '-' {
-		sign = -1
-		s = s[1:]
+	if negative {
+		sum *= -1
 	}
+	return sum
+}
 
-	result := 0
-	for i := 0; i < len(s); i++ {
-		if s[i] < '0' || s[i] > '9' {
-			return 0 // indicate invalid input
+func RevString(str string) string {
+	var rev string
+	for i := len(str) - 1; i >= 0; i-- {
+		rev += string(str[i])
+	}
+	return rev
+}
+
+func RevAtoi(nbr int) string {
+	var str string
+	if len(str) == 0 {
+		for nbr > 0 {
+			str += string(rune(nbr%10) + '0')
+			nbr /= 10
 		}
-		result = result*10 + int(s[i]-'0')
 	}
-	return result * sign
-}
-
-func PrintNbr(n int) {
-	if n == -9223372036854775808 {
-		z01.PrintRune('-')
-		for _, c := range "9223372036854775808" {
-			z01.PrintRune(c)
+	if len(str) == 0 {
+		nbr *= -1
+		for nbr > 0 {
+			str += string(rune(nbr%10) + '0')
+			nbr /= 10
 		}
-		return
+		if len(str) == 0 {
+			str = "0"
+		} else {
+			str += "-"
+		}
 	}
-
-	if n < 0 {
-		z01.PrintRune('-')
-		n = -n
-	}
-	if n/10 != 0 {
-		PrintNbr(n / 10)
-	}
-	z01.PrintRune(rune(n%10 + '0'))
-}
-
-func printstr(s string) {
-	for _, char := range s {
-		z01.PrintRune(char)
-	}
-	z01.PrintRune('\n')
+	return RevString(str)
 }
 
 func main() {
-	args := os.Args[1:]
-
-	if len(args) < 3 {
-		return
+	args := os.Args
+	if len(args) != 4 {
+		os.Exit(0)
 	}
-
-	num1 := args[0]
-	num2 := args[2]
-	oper := args[1]
-
-	if IsUnderflow(num1) || IsOverflow(num1) || IsUnderflow(num2) || IsOverflow(num2) {
-		return
+	args = args[1:]
+	if !Contains(args[1], "+-*/%") {
+		os.Exit(0)
 	}
-
-	for i := 0; i < len(num1); i++ {
-		if !Isdigit(num1[i]) {
-			return
+	if (args[1] == "%" && args[2] == "0") || (args[1] == "/" && args[2] == "0") {
+		switch args[1] {
+		case "%":
+			os.Stdout.Write([]byte("No modulo by 0\n"))
+			os.Exit(0)
+		case "/":
+			os.Stdout.Write([]byte("No division by 0\n"))
+			os.Exit(0)
 		}
 	}
-
-	for i := 0; i < len(num2); i++ {
-		if !Isdigit(num2[i]) {
-			return
+	for i := range args[0] {
+		if args[0][i] >= 'a' && args[0][i] <= 'z' {
+			os.Exit(0)
+		}
+		if args[0][i] >= 'A' && args[0][i] <= 'Z' {
+			os.Exit(0)
 		}
 	}
-
-	operators := []string{"+", "-", "/", "%", "*"}
-
-	validOperator := false
-	for i := 0; i < len(operators); i++ {
-		if oper == operators[i] {
-			validOperator = true
-			break
+	for i := range args[2] {
+		if args[2][i] >= 'a' && args[2][i] <= 'z' {
+			os.Exit(0)
+		}
+		if args[2][i] >= 'A' && args[2][i] <= 'Z' {
+			os.Exit(0)
 		}
 	}
-
-	if !validOperator {
-		return
+	num1 := Atoi(args[0])
+	num2 := Atoi(args[2])
+	if args[0] >= "9223372036854775807" || args[2] >= "9223372036854775807" {
+		os.Exit(0)
 	}
-
-	val1 := Atoi(num1)
-	val2 := Atoi(num2)
-
-	res := 0
-
-	switch oper {
+	var sum int
+	switch args[1] {
 	case "+":
-		if (val1 > 0) && (val2 > 9223372036854775807-val1) {
-			return
+		sum = num1 + num2
+		if num1 > 0 && num2 > 0 && sum < 0 {
+			os.Exit(0)
 		}
-		if (val1 < 0) && (val2 < -9223372036854775808-val1) {
-			return
-		}
-		res = val1 + val2
-
 	case "-":
-		if (val1 > 0) && (val2 > 9223372036854775807-val1) {
-			return
+		sum = num1 - num2
+		if num1 < 0 && num2 < 0 && sum > 0 {
+			os.Exit(0)
 		}
-		if (val1 < 0) && (val2 < -9223372036854775808-val1) {
-			return
-		}
-		res = val1 - val2
-
-	case "/":
-		if (val1 > 0) && (val2 > 9223372036854775807-val1) {
-			return
-		}
-		if (val1 < 0) && (val2 < -9223372036854775808-val1) {
-			return
-		}
-		if val2 == 0 {
-			printstr("No division by 0")
-			z01.PrintRune('\n')
-			return
-		}
-		res = val1 / val2
-
-	case "%":
-		if (val1 > 0) && (val2 > 9223372036854775807-val1) {
-			return
-		}
-		if (val1 < 0) && (val2 < -9223372036854775808-val1) {
-			return
-		}
-		if val2 == 0 {
-			printstr("No modulo by 0")
-			z01.PrintRune('\n')
-			return
-		}
-		res = val1 % val2
-
 	case "*":
-		res = val1 * val2
+		sum = num1 * num2
+		if num1 > 0 && num2 > 0 && sum < 0 {
+			os.Exit(0)
+		}
+	case "/":
+		sum = num1 / num2
+	case "%":
+		sum = num1 % num2
 	}
-
-	PrintNbr(res)
-	z01.PrintRune('\n')
+	os.Stdout.Write([]byte(RevAtoi(sum) + "\n"))
 }
