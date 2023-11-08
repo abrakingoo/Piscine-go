@@ -17,7 +17,7 @@ func ReadInput() {
 		}
 		if err != nil {
 			PrintStr("ERROR: reading standard input")
-			return
+			os.Exit(1)
 		}
 		PrintStr(string(data[:size]))
 	}
@@ -45,7 +45,7 @@ func ReadFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
 		PrintStr("ERROR: open " + filename + ": no such file or directory")
-		return
+		os.Exit(1) 
 	}
 	defer file.Close()
 
@@ -57,7 +57,7 @@ func ReadFile(filename string) {
 		}
 		if err != nil {
 			PrintStr("ERROR: reading " + filename)
-			return
+			os.Exit(1)
 		}
 		PrintStr(string(data[:size]))
 	}
