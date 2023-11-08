@@ -9,7 +9,7 @@ import (
 
 func ReadInput() {
 	data := make([]byte, 1024)
-	
+
 	for {
 		size, err := os.Stdin.Read(data)
 		if err == io.EOF {
