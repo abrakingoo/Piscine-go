@@ -24,12 +24,11 @@ func MyReadFile(fileName string) string {
 
 func main() {
 	args := os.Args[1:]
-	// abc := "1"
 	finish := false
 	for _, fileName := range args {
 		if _, err := os.Stat(fileName); err != nil {
-			PrintResult("open " + fileName + ": no such file or directory\n")
-			return
+			PrintResult("ERROR: open " + fileName + ": no such file or directory\n")
+			os.Exit(1)
 		}
 		PrintResult(MyReadFile(fileName))
 		finish = true
