@@ -1,65 +1,42 @@
 package main
 
 import (
-	"io"
-	"os"
-
 	"github.com/01-edu/z01"
+	"io"
+	"io/ioutil"
+	"os"
 )
 
-func ReadInput() {
-	data := make([]byte, 1024)
-
-	for {
-		size, err := os.Stdin.Read(data)
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			PrintStr("ERROR: reading standard input")
-			os.Exit(1)
-		}
-		PrintStr(string(data[:size]))
+func PrintResult(str string) {
+	for _, val := range str {
+		z01.PrintRune(val)
 	}
 }
 
-func PrintStr(str string) {
-	for _, r := range str {
-		z01.PrintRune(r)
+func MyReadFile(fileName string) string {
+	content, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		return "error"
 	}
-	// z01.PrintRune('\n')
+	return string(content)
 }
 
 func main() {
-	if len(os.Args) == 1 {
-		ReadInput()
-	} else {
-		args := os.Args[1:]
-		for _, filename := range args {
-			ReadFile(filename)
+	args := os.Args[1:]
+	// abc := "1"
+	finish := false
+	for _, fileName := range args {
+		if _, err := os.Stat(fileName); err != nil {
+			PrintResult("open " + fileName + ": no such file or directory\n")
+			return
 		}
+		PrintResult(MyReadFile(fileName))
+		finish = true
 	}
-}
-
-func ReadFile(filename string) {
-	file, err := os.Open(filename)
-	if err != nil {
-		PrintStr("ERROR: open " + filename + ": no such file or directory")
-
-		os.Exit(1)
-	}
-	defer file.Close()
-
-	data := make([]byte, 1024)
-	for {
-		size, err := file.Read(data)
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			PrintStr("ERROR: reading " + filename)
-			os.Exit(1)
-		}
-		PrintStr(string(data[:size]))
+	if !finish {
+		reader := io.TeeReader(os.Stdin, os.Stdout)
+		ioutil.ReadAll(reader)
+		os.Stdin.Close()
+		os.Stdout.Close()
 	}
 }
