@@ -60,8 +60,6 @@ func Atoi(s string) int {
 	return result * sign
 }
 
-
-
 func PrintNbr(n int) {
 	if n == -9223372036854775808 {
 		z01.PrintRune('-')
