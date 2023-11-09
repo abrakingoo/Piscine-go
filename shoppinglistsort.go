@@ -15,5 +15,4 @@ func ShoppingListSort(slice []string) []string {
 		newList = append(newList, slice[i])
 	}
 	return newList
-
 }
