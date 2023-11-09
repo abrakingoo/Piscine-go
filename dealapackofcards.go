@@ -24,6 +24,7 @@ func DealAPackOfCards(deck []int) {
 		for j := val; j < val+3; j++ {
 			fmt.Printf("%v", deck[j])
 			if j < val+2 {
+				z01.PrintRune(',')
 				z01.PrintRune(' ')
 			}
 		}
