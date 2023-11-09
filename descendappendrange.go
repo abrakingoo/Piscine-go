@@ -1,12 +1,13 @@
 package piscine
 
-func DescendAppendRange(min, max int) []int {
-	res := []int{}
-
-	if max > min {
-		for i := max; i > min; i-- {
-			res = append(res, i)
-		}
+func DescendAppendRange(max, min int) []int {
+	if max <= min {
+		return []int{}
 	}
-	return res
+
+	result := make([]int, 0, max-min)
+	for i := max; i > min; i-- {
+		result = append(result, i)
+	}
+	return result
 }
