@@ -1,12 +1,13 @@
 package piscine
 
 func DescendAppendRange(min, max int) []int {
-	if max > min {
-		res := []int{}
-		for i := max - min - 1; i >= 0; i-- {
-			res = append(res, max-i)
-		}
-		return res
+	res := []int{}
+
+	if min >= max {
+		return []int{}
 	}
-	return []int{}
+	for i := max; i < min; i-- {
+		res = append(res, i)
+	}
+	return res
 }
