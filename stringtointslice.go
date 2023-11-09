@@ -7,7 +7,7 @@ func StringToIntSlice(str string) []int {
 		for _, char := range str {
 			res = append(res, int(char))
 		}
-	return res
+		return res
 	}
 	return []int(nil)
 }
