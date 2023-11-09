@@ -6,9 +6,18 @@ import (
 	"github.com/01-edu/z01"
 )
 
+func ManualLen(slice []int) int {
+	length := 0
+	for range slice {
+		length++
+	}
+	return length
+}
+
 func DealAPackOfCards(deck []int) {
+	length := ManualLen(deck)
 	val := 0
-	for i := 1; i <= len(deck)/3; i++ {
+	for i := 1; i <= length/3; i++ {
 		fmt.Printf("Player ")
 		fmt.Printf("%v", i)
 		fmt.Printf(": ")
