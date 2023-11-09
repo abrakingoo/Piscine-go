@@ -1,7 +1,6 @@
 package piscine
 
 func StringToIntSlice(str string) []int {
-
 	if str != "" {
 		res := []int{}
 		for _, char := range str {
