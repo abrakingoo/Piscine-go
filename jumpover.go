@@ -1,7 +1,7 @@
 package piscine
 
 func JumpOver(str string) string {
-	if len(str) < 3 {
+	if str == "" || len(str) < 3 {
 		return "\n"
 	}
 	newS := ""
@@ -9,5 +9,5 @@ func JumpOver(str string) string {
 	for i := 2; i < len(str); i += 3 {
 		newS += string(str[i])
 	}
-	return newS
+	return newS + "\n"
 }
