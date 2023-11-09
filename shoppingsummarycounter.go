@@ -7,14 +7,10 @@ func ShoppingSummaryCounter(str string) map[string]int {
 		if str[i] != ' ' {
 			word += string(str[i])
 		} else {
-			if word != "" {
-				shoppingSummary[word]++
-				word = ""
-			}
+			shoppingSummary[word]++
+			word = ""
 		}
 	}
-	if word != "" {
-		shoppingSummary[word]++
-	}
+	shoppingSummary[word]++ // Count the last word
 	return shoppingSummary
 }
