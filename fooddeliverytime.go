@@ -5,7 +5,6 @@ type food struct {
 }
 
 func FoodDeliveryTime(order string) int {
-
 	chips := food{
 		preptime: 10,
 	}
@@ -25,5 +24,4 @@ func FoodDeliveryTime(order string) int {
 		return nuggets.preptime
 	}
 	return 404
-
 }
