@@ -1,9 +1,5 @@
 package piscine
 
-import (
-	"github.com/01-edu/z01"
-)
-
 func LoafOfBread(str string) string {
 	length := 5
 	if len(str) < length {
