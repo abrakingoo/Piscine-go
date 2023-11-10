@@ -5,22 +5,26 @@ import (
 )
 
 func LoafOfBread(str string) string {
-	if len(str) < 5 {
+	length := 5
+	if len(str) < length {
 		return "Invalid Output\n"
 	}
 	var result string
-	var count int
+	counter := 0
 	for _, char := range str {
-		if count < 5 {
+		if counter < length {
 			if char != ' ' {
 				z01.PrintRune(char)
 				result += string(char)
-				count++
+				counter++
 			}
 		} else {
-			z01.PrintRune('\n')
-			break
+			z01.PrintRune(' ')
+			z01.PrintRune(char)
+			result += " " + string(char)
+			counter++
 		}
 	}
-	return result
+	z01.PrintRune('\n')
+	return result + "\n"
 }
