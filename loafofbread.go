@@ -1,29 +1,26 @@
 package piscine
 
-import (
-	"github.com/01-edu/z01"
-)
-
 func LoafOfBread(str string) string {
+	if str == "" {
+		return "\n"
+	}
 	if len(str) < 5 {
 		return "Invalid Output\n"
 	}
-	var result string
+	answer := ""
 	counter := 0
-	for _, char := range str {
-		if counter < 5 {
-			if char != ' ' {
-				z01.PrintRune(char)
-				result += string(char)
-				counter++
-			}
-		} else {
-			z01.PrintRune(' ')
-			z01.PrintRune(char)
-			result += " " + string(char)
+	for i, value := range str {
+		if value != ' ' && counter != 5 {
+			answer += string(value)
 			counter++
+		} else if counter == 5 {
+			answer += " "
+			counter = 0
+		}
+		if i == len(str)-1 && len(answer) > 0 && answer[len(answer)-1] == ' ' {
+			answer = answer[:len(answer)-1]
 		}
 	}
-	z01.PrintRune('\n')
-	return result + "\n"
+	answer += "\n"
+	return answer
 }
