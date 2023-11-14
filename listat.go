@@ -1,7 +1,6 @@
 package piscine
 
 func ListAt(l *NodeL, pos int) *NodeL {
-
 	current := l
 	count := 0
 
