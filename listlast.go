@@ -1,5 +1,8 @@
 package piscine
 
 func ListLast(l *List) interface{} {
-	return l.Head.Data
+	if l.Head != nil {
+		return l.Head.Data
+	}
+	return nil
 }
