@@ -6,10 +6,9 @@ type NodeI struct {
 }
 
 func ListSort(l *NodeI) *NodeI {
-	if l.Next == nil {
+	if l == nil || l.Next == nil {
 		return l
 	}
-
 	current := l
 
 	for current != nil {
