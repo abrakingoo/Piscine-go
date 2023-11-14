@@ -9,6 +9,7 @@ func ListAt(l *NodeL, pos int) *NodeL {
 			return current
 		}
 		current = current.Next
+		count++
 	}
 
 	return nil
