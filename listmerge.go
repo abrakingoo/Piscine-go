@@ -5,10 +5,8 @@ func ListMerge(l1 *List, l2 *List) {
 
 	if current == nil {
 		l1.Head = l2.Head
+		l1.Tail = l2.Tail
 	}
-
-	for current.Next != nil {
-		current = current.Next
-	}
-	current.Next = l2.Head
+	l1.Tail.Next = l2.Head
+	l1.Tail = l2.Tail
 }
