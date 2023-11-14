@@ -7,8 +7,8 @@ func SortListInsert(l *NodeI, data_ref int) *NodeI {
 		newNode.Next = l
 		return newNode
 	}
-	current := l
 
+	current := l
 	for current.Next != l && current.Next.Data <= data_ref {
 		current = current.Next
 	}
