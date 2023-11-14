@@ -3,11 +3,12 @@ package piscine
 func ListMerge(l1 *List, l2 *List) {
 	current := l1.Head
 
-	for current != nil {
-		if current.Next == nil {
-			current.Next = l2.Head
-			break
-		}
+	if current == nil {
+		l1.Head = l2.Head
+	}
+
+	for current.Next != nil {
 		current = current.Next
 	}
+	current.Next = l2.Head
 }
