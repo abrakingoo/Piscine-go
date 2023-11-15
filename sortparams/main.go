@@ -8,27 +8,18 @@ import (
 
 func main() {
 	arguments := os.Args[1:]
-
-	for i := 0; i < len(arguments)-1; i++ {
-		for j := 0; j < len(arguments)-i-1; j++ {
-			if compare(arguments[j], arguments[j+1]) > 0 {
-				arguments[j], arguments[j+1] = arguments[j+1], arguments[j]
+	for i := 0; i < len(arguments); i++ {
+		for j := i + 1; j < len(arguments); j++ {
+			if arguments[i] > arguments[j] {
+				arguments[i], arguments[j] = arguments[j], arguments[i]
 			}
 		}
 	}
 
-	for _, char := range arguments {
-		z01.PrintRune(rune(char[0]))
+	for _, args := range arguments {
+		for _, char := range args {
+			z01.PrintRune(char)
+		}
 		z01.PrintRune('\n')
 	}
-}
-
-func compare(a, b string) int {
-	if a == b {
-		return 0
-	}
-	if a < b {
-		return -1
-	}
-	return 1
 }
