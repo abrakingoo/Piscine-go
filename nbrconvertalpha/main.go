@@ -40,6 +40,9 @@ func findChar(char int) rune {
 func main() {
 	flag := "--upper"
 	args := os.Args[1:]
+	if len(args) == 0 {
+		return
+	}
 
 	convertToUpper := false
 	for _, arg := range args {
