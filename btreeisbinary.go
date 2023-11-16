@@ -5,8 +5,8 @@ func BTreeIsBinary(root *TreeNode) bool {
 		return true
 	}
 
-	// If either left or right subtree is nil (not both)
-	if (root.Left == nil && root.Right != nil) || (root.Left != nil && root.Right == nil) {
+	// If both left and right subtrees are non-nil
+	if root.Left != nil && root.Right != nil {
 		return false
 	}
 
